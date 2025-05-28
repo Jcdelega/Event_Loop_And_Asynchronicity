@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Loop And Asynchronicity</title>
+    <link rel="stylesheet" href="/src/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <script defer src="/src/js/index.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">
+            <i class="bi bi-cup-hot"></i>
+            Cafeteria
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>Cafeteria Orders simulator</h1>
+      <section>
+        <section class="products">
+          <button class="addOrderBtn product-btn" value="Coffee">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="white cup of coffee"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Croissant">
+            <img
+              src="https://pngimg.com/uploads/croissant/small/croissant_PNG46661.png"
+              alt="Croissant"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Bagel">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/049/814/922/small/a-freshly-baked-bagel-topped-with-creamy-goodness-perfect-for-a-delicious-breakfast-or-brunch-png.png"
+              alt="Bagel"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Muffin">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/050/704/795/small/muffin-isolated-on-transparent-background-png.png"
+              alt="Muffin"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Panini">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/007/949/309/small/hand-drawn-panini-food-1-free-vector.jpg"
+              alt="Panini"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Caesar Salad">
+            <img
+              src="https://production-media.gousto.co.uk/cms/mood-image/1043_Classic-Veggie-Caesar-Salad-V_002_0-1695635115233-x200.jpg"
+              alt="Caesar Salad"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Smoothie">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaTM2g3N188TXpOzf1mMdwzVLtyP7lJwGucQ&s"
+              alt="Smoothie"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Sandwich">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/058/431/819/small/a-freshly-made-sandwich-containing-vegetables-on-toasted-bread-png.png"
+              alt="Sandwich"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Pastries">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/056/722/983/small/a-collection-of-delicious-pastries-showcasing-various-shapes-textures-and-fillings-perfect-for-showcasing-bakery-delights-breakfast-options-or-dessert-spreads-photo.jpg"
+              alt="Pastries"
+              class="product-img"
+            />
+          </button>
+          <button class="addOrderBtn product-btn" value="Water Glass">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/028/566/408/small/glass-of-water-isolated-hand-drawn-painting-illustration-vector.jpg"
+              alt="water glass"
+              class="product-img"
+            />
+          </button>
+        </section>
+        <h2 class="text-center m-3 fst-italic">Click over the meal you want to order</h2>
+        <!-- <button class="btn btn-dark align-center m-3" id="addOrderBtn">
+          Add Order
+        </button> -->
+        <ul id="orderList"></ul>
+      </section>
+    </main>
+    <footer>
+      <div class="card">
+        <div class="card-header">This site still under construction</div>
+        <div class="card-body">
+          <h5 class="card-title">
+            You're gonna be able to do more things in the future
+          </h5>
+          <p class="card-text">
+            Okay, here's an interesting little story about a cafeteria, one that
+            has a touch of mystery and a whole lot of local charm. This one
+            isn't a world-famous legend, but the kind of tale whispered between
+            regulars, making their daily coffee a bit more flavorful.
+          </p>
+          <a href="https://play.headliner.app/podcast/1e74f5887a384f68970722aa08be7956/episode/tag%3Aaudioboom.com%2C2024-02-01%3A%2Fposts%2F8451140" class="btn btn-dark"
+            >Click here to know more about this story</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
